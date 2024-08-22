@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link the css file to style the display -->
+    <link rel="stylesheet" href="style.css">
+    <title>Student Print Shop</title>
+</head>
+
+<body>
+    <center>
+        <h1>Student Print Shop</h1>
+        <div class="main">
+            <!-- Creating a form to store student data -->
+            <form action="">
+                <input type="text" placeholder="Enter your name" id="name" required><br>
+                <input type="email" placeholder="Enter your email" id="email" required><br>
+                <input type="text" placeholder="Enter your phone number" id="number" required><br>
+                <input type="text" placeholder="Number of copies" id="noc" required><br>
+                <input type="file" name="" id="file" required><br>
+                <select name="" id="select" required>
+                    <option value="">Type of copies</option>
+                    <option value="B/W - single sided" id="one">B/W - single sided</option>
+                    <option value="B/W - double sided" id="two">B/W - double sided</option>
+                    <option value="Color - single sided" id="three">Color - single sided</option>
+                    <option value="Color - double sided" id="four">Color - double sided</option>
+                </select><br>
+                <textarea name="" placeholder="Additional instrutions" rows="10" cols="51" id="opt"></textarea><br>
+                <!-- Call that function in the button -->
+                <button type="submit" id="btn" onclick="calculate()">Submit</button>
+            </form>
+        </div>
+    </center>
+
+
+
+    <script>
+        function calculate() {
+            // Call of all tags in which the student data is stored
+            var name = document.getElementById("name");
+            var email = document.getElementById("email");
+            var num = document.getElementById("number");
+            var noc = document.getElementById("noc");
+            var file = document.getElementById("file");
+            var slct = document.getElementById("select");
+            var opt = document.getElementById("opt");
+            var one = document.getElementById("one");
+            var two = document.getElementById("two");
+            var three = document.getElementById("three");
+            var four = document.getElementById("four");
+            var btn = document.getElementById("btn");
+
+            // Calling a div tag to hide on display after filling the form and clicking the button 
+            var div = document.querySelector(".main");
+
+            // Using localStorage to save student's email and number 
+            localStorage.setItem("email", email.value);
+            localStorage.setItem("number", num.value);
+
+            // Using if conditions for the total bill of separate types of copies that provide to the student
+            // And in all conditions, I hided a div tag that I called earlier and create new tags with the help of DOM and style those tags 
+            // Condition 1 (B/W - single sided)
+            if (slct.value === one.value) {
+                var cal1 = parseInt(noc.value) * 1 + " euro";
+                div.style.display = "none";
+                var sn1 = document.createElement("h3");
+                var sn1t = document.createTextNode("Client name: "+name.value);
+                sn1.appendChild(sn1t); 
+                document.write("<center><h1>Student Data</h1></center>")
+                document.body.appendChild(sn1);
+                sn1.style.textAlign="center";
+                sn1.style.color="rgb(77, 52, 96)";
+                sn1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sn1.style.padding="10px";
+
+                var sc1 = document.createElement("h3");
+                var sc1t = document.createTextNode("Number of copies: "+noc.value);
+                sc1.appendChild(sc1t);
+                document.body.appendChild(sc1);
+                sc1.style.textAlign="center";
+                sc1.style.color="rgb(77, 52, 96)";
+                sc1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sc1.style.padding="10px";
+        
+                var st1 = document.createElement("h3");
+                var st1t = document.createTextNode("Type of copies: "+one.value);
+                st1.appendChild(st1t);
+                document.body.appendChild(st1);
+                st1.style.textAlign="center";
+                st1.style.color="rgb(77, 52, 96)";
+                st1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                st1.style.padding="10px";
+
+                var t1 = document.createElement("h3");
+                var t1t = document.createTextNode("Your bill: "+cal1);
+                t1.appendChild(t1t);
+                document.body.appendChild(t1);
+                t1.style.textAlign="center";
+                t1.style.color="rgb(77, 52, 96)";
+                t1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                t1.style.padding="10px";
+
+                var b1 = document.createElement("button");
+                var b1t = document.createTextNode("Print");
+                b1.appendChild(b1t);
+                document.body.appendChild(b1);
+                b1.style.textAlign="center";
+                b1.style.color="rgb(77, 52, 96)";
+                b1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                b1.style.padding="10px 20px";
+                b1.style.border="none";
+                b1.style.borderRadius="5px";
+                b1.style.marginLeft="48%";
+                b1.setAttribute("type","submit"); 
+                b1.style.cursor="pointer";
+                b1.setAttribute("onclick","print()"); 
+                // Using addEventListener() method attaches an event handler 
+                document.addEventListener("click", print)
+                function print(){
+                }
+            } 
+            // Condition 2 (B/W - double sided)
+            else if (slct.value === two.value) {
+                var cal1 = parseInt(noc.value) * 2 + " euro";
+                div.style.display = "none";
+                var sn1 = document.createElement("h3");
+                var sn1t = document.createTextNode("Client name: "+name.value);
+                sn1.appendChild(sn1t);
+                document.write("<center><h1>Student Data</h1></center>")
+                document.body.appendChild(sn1);
+                sn1.style.textAlign="center";
+                sn1.style.color="rgb(77, 52, 96)";
+                sn1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sn1.style.padding="10px";
+
+                var sc1 = document.createElement("h3");
+                var sc1t = document.createTextNode("Number of copies: "+noc.value);
+                sc1.appendChild(sc1t);
+                document.body.appendChild(sc1);
+                sc1.style.textAlign="center";
+                sc1.style.color="rgb(77, 52, 96)";
+                sc1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sc1.style.padding="10px";
+        
+                var st1 = document.createElement("h3");
+                var st1t = document.createTextNode("Type of copies: "+two.value);
+                st1.appendChild(st1t);
+                document.body.appendChild(st1);
+                st1.style.textAlign="center";
+                st1.style.color="rgb(77, 52, 96)";
+                st1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                st1.style.padding="10px";
+
+                var t1 = document.createElement("h3");
+                var t1t = document.createTextNode("Your bill: "+cal1);
+                t1.appendChild(t1t);
+                document.body.appendChild(t1);
+                t1.style.textAlign="center";
+                t1.style.color="rgb(77, 52, 96)";
+                t1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                t1.style.padding="10px";
+
+                var b1 = document.createElement("button");
+                var b1t = document.createTextNode("Print");
+                b1.appendChild(b1t);
+                document.body.appendChild(b1);
+                b1.style.textAlign="center";
+                b1.style.color="rgb(77, 52, 96)";
+                b1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                b1.style.padding="10px 20px";
+                b1.style.border="none";
+                b1.style.borderRadius="5px";
+                b1.style.marginLeft="48%";
+                b1.setAttribute("type","submit"); 
+                b1.style.cursor="pointer";
+                b1.setAttribute("onclick","print()"); 
+                // Using addEventListener() method attaches an event handler 
+                document.addEventListener("click", print)
+                function print(){
+                }
+            } 
+            // Condition 3 (color - single sided)
+            else if (slct.value === three.value) {
+                var cal1 = parseInt(noc.value) * 3 + " euro";
+                div.style.display = "none";
+                var sn1 = document.createElement("h3");
+                var sn1t = document.createTextNode("Client name: "+name.value);
+                sn1.appendChild(sn1t);
+                document.write("<center><h1>Student Data</h1></center>")
+                document.body.appendChild(sn1);
+                sn1.style.textAlign="center";
+                sn1.style.color="rgb(77, 52, 96)";
+                sn1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sn1.style.padding="10px";
+
+                var sc1 = document.createElement("h3");
+                var sc1t = document.createTextNode("Number of copies: "+noc.value);
+                sc1.appendChild(sc1t);
+                document.body.appendChild(sc1);
+                sc1.style.textAlign="center";
+                sc1.style.color="rgb(77, 52, 96)";
+                sc1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sc1.style.padding="10px";
+        
+                var st1 = document.createElement("h3");
+                var st1t = document.createTextNode("Type of copies: "+three.value);
+                st1.appendChild(st1t);
+                document.body.appendChild(st1);
+                st1.style.textAlign="center";
+                st1.style.color="rgb(77, 52, 96)";
+                st1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                st1.style.padding="10px";
+
+                var t1 = document.createElement("h3");
+                var t1t = document.createTextNode("Your bill: "+cal1);
+                t1.appendChild(t1t);
+                document.body.appendChild(t1);
+                t1.style.textAlign="center";
+                t1.style.color="rgb(77, 52, 96)";
+                t1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                t1.style.padding="10px";
+
+                var b1 = document.createElement("button");
+                var b1t = document.createTextNode("Print");
+                b1.appendChild(b1t);
+                document.body.appendChild(b1);
+                b1.style.textAlign="center";
+                b1.style.color="rgb(77, 52, 96)";
+                b1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                b1.style.padding="10px 20px";
+                b1.style.border="none";
+                b1.style.borderRadius="5px";
+                b1.style.marginLeft="48%";
+                b1.setAttribute("type","submit"); 
+                b1.style.cursor="pointer";
+                b1.setAttribute("onclick","print()"); 
+                // Using addEventListener() method attaches an event handler 
+                document.addEventListener("click", print)
+                function print(){
+                }
+            } 
+            // Condition 4 (color - double sided)
+            else if (slct.value === four.value) {
+                var cal1 = parseInt(noc.value) * 4 + " euro";
+                div.style.display = "none";
+                var sn1 = document.createElement("h3");
+                var sn1t = document.createTextNode("Client name: "+name.value);
+                sn1.appendChild(sn1t);
+                document.write("<center><h1>Student Data</h1></center>")
+                document.body.appendChild(sn1);
+                sn1.style.textAlign="center";
+                sn1.style.color="rgb(77, 52, 96)";
+                sn1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sn1.style.padding="10px";
+
+                var sc1 = document.createElement("h3");
+                var sc1t = document.createTextNode("Number of copies: "+noc.value);
+                sc1.appendChild(sc1t);
+                document.body.appendChild(sc1);
+                sc1.style.textAlign="center";
+                sc1.style.color="rgb(77, 52, 96)";
+                sc1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                sc1.style.padding="10px";
+        
+                var st1 = document.createElement("h3");
+                var st1t = document.createTextNode("Type of copies: "+four.value);
+                st1.appendChild(st1t);
+                document.body.appendChild(st1);
+                st1.style.textAlign="center";
+                st1.style.color="rgb(77, 52, 96)";
+                st1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                st1.style.padding="10px";
+
+                var t1 = document.createElement("h3");
+                var t1t = document.createTextNode("Your bill: "+cal1);
+                t1.appendChild(t1t);
+                document.body.appendChild(t1);
+                t1.style.textAlign="center";
+                t1.style.color="rgb(77, 52, 96)";
+                t1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                t1.style.padding="10px";
+
+                var b1 = document.createElement("button");
+                var b1t = document.createTextNode("Print");
+                b1.appendChild(b1t);
+                document.body.appendChild(b1);
+                b1.style.textAlign="center";
+                b1.style.color="rgb(77, 52, 96)";
+                b1.style.backgroundColor="rgba(213, 180, 236, 0.699)";
+                b1.style.padding="10px 20px";
+                b1.style.border="none";
+                b1.style.borderRadius="5px";
+                b1.style.marginLeft="48%";
+                b1.setAttribute("type","submit"); 
+                b1.style.cursor="pointer";
+                b1.setAttribute("onclick","print()"); 
+                // Using addEventListener() method attaches an event handler 
+                document.addEventListener("click", print)
+                function print(){
+                }
+            }
+
+            // Again using if conditions to those students who don't fill out the complete form
+            if (name.value === "" || email.value === "" || num.value === "" || noc.value === "" 
+            || slct === "Type of copies" || file === "") {
+                div.style.display = "block"
+                alert("Please fill the form!")
+            } else {
+                div.style.display = "none"
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!-- Here are more methods I use to bill and display student data but these work not working -->
+
+<!-- // div.style.display = "none";
+// var total = "<h2>Client name: " + name.value + "</h2><br><h2>Number of copies: " + noc.value 
+// + "</h2><br><h2>Type of copies: " + one.value + "</h2><br><h2>Your bill: "+cal1+"</h2>";
+// hide.appendChild(total)
+// var a = document.getElementById("a");
+// a.appendchild(total) -->
+<!-- // var n = document.write("<center><h3 class ='result'>Client name: "+name.value+"</h3>");
+    // var copies = document.write("<h3 class ='result'>Number of copies: "+noc.value+"</h3>");
+    // var s1 = document.write("<h3 class ='result'>Type of copies: "+one.value+"</h3>");
+    // var total1 = document.write("<h3 class ='result'>Your bill: "+cal1+"</h3></center>");
+    var cal2 = parseInt(noc.value) * 2 + " euro";
+    var n = document.write("<center><h3 class ='result'>Client name: " + name.value + "</h3>");
+    var copies = document.write("<h3 class ='result'>Number of copies: " + noc.value + "</h3>");
+    var s1 = document.write("<h3 class ='result'>Type of copies: " + two.value + "</h3>");
+    var total1 = document.write("<h3 class ='result'>Your bill: " + cal2 + "</h3></center>");
+    var cal3 = parseInt(noc.value) * 3 + " euro";
+    var n = document.write("<center><h3 class ='result'>Client name: " + name.value + "</h3>");
+    var copies = document.write("<h3 class ='result'>Number of copies: " + noc.value + "</h3>");
+    var s1 = document.write("<h3 class ='result'>Type of copies: " + three.value + "</h3>");
+    var total1 = document.write("<h3 class ='result'>Your bill: " + cal3 + "</h3></center>");
+    var cal4 = parseInt(noc.value) * 4 + " euro";
+    var n = document.write("<center><h3 class = 'result'>Client name: " + name.value + "</h3>");
+    var copies = document.write("<h3 class = 'result'>Number of copies: " + noc.value + "</h3>");
+    var s1 = document.write("<h3 class = 'result'>Type of copies: " + four.value + "</h3>");
+    var total1 = document.write("<h3 class = 'result'>Your bill: " + cal4 + "</h3></center>"); -->

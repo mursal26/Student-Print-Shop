@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(234, 234, 247);
+    font-family: sans-serif;
+    overflow: hidden;
+}
+div{
+    margin-top: -5px;
+}
+h1{
+    color: rgb(77, 52, 96);
+}
+input, select, textarea, button{
+    margin-top: 7px;
+    padding: 9.5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(213, 180, 236, 0.699);
+    color: rgb(77, 52, 96);
+}
+input{
+    width: 31%;
+}
+select, button{
+    width: 32.5%;
+}
+button{
+    margin-top: 5px;
+}
+::-webkit-input-placeholder{
+    color: rgb(77, 52, 96);
+}
+button:hover{
+    cursor: pointer;
+    background-color: rgb(77, 52, 96);
+    color: rgb(234, 234, 247);
+    transition: 0.5s;
+}
+input:focus, select:focus, textarea:focus{
+    outline: 0px;
+    background-color: rgb(232, 240, 254);
+}
